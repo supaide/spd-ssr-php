@@ -7,6 +7,9 @@ include SITE_BASE . DIRECTORY_SEPARATOR . 'bootstrap.php';
 
 $query = parse_url(filter_var(isset($_SERVER['REDIRECT_URL']) ? $_SERVER['REDIRECT_URL'] : $_SERVER['REQUEST_URI'], FILTER_SANITIZE_URL));
 $path = trim($query['path'], '/');
+if (empty($path)) {
+  $path = 'index';
+}
 
 include SITE_BASE . DIRECTORY_SEPARATOR . 'controllers' . DIRECTORY_SEPARATOR . 'Index.php';
 
